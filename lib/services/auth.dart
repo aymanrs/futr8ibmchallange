@@ -103,5 +103,4 @@ class AuthService {
     return _auth.signOut();
   }
 }
-
 // keytool -list -v -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
