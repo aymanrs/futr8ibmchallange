@@ -1,0 +1,32 @@
+name: flutter_ibmchallenge
+description: ibmchallenge.
+
+version: 0.0.1
+
+environment:
+  sdk: ">=2.3.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  animated_floatactionbuttons: '0.1.0'
+  async: '^2.2.0'
+  firebase_core: 0.4.0+9
+  cloud_firestore: '^0.12.9+3'
+  firebase_analytics: ^5.0.1
+  firebase_auth: 0.14.0+5
+  google_sign_in: 4.0.7
+  provider: '3.0.0+1'
+  font_awesome_flutter: 8.4.0
+
+
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - res/images/

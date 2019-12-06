@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "472063263947",
+    "firebase_url": "https://futr-d2e9f.firebaseio.com",
+    "project_id": "futr-d2e9f",
+    "storage_bucket": "futr-d2e9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472063263947:android:b51f79aeb1d9b1275f874e",
+        "android_client_info": {
+          "package_name": "ma.futr.challenge.mobile.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472063263947-u9fp21jc0975v7243t4bs2prqkoiklqc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ma.futr.challenge.mobile.android",
+            "certificate_hash": "233b480313b8eb721977d329405b251bbc4c1fa2"
+          }
+        },
+        {
+          "client_id": "472063263947-o0mp5dgcou4fsp9420tn5g7tsk3vq845.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh9AnEkc_85xjx_xknmdMfePA6hO1hgms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472063263947-o0mp5dgcou4fsp9420tn5g7tsk3vq845.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
