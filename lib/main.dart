@@ -16,6 +16,10 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<AuthService>.value(value: AuthService()),
+        Provider<String>.value(value: "anas"
+            ""
+            ""),
+
         StreamProvider<User>.value(
           initialData: User(firebaseUser: null, roles: []),
           value: AuthService().user,
