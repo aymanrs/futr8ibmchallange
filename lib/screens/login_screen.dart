@@ -27,14 +27,16 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Container(
-              width: 104.4,
-              child: Image(
-                image: AssetImage('res/images/logo.jpg'),
+            Flexible(
+              child: Container(
+                width: 300.0,
+                child: Image(
+                  image: AssetImage('res/images/logo.png'),
+                ),
               ),
             ),
             TextFormField(
@@ -44,8 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 labelText: 'e-mail or username',
               ),
-              validator: (value) =>
-                  value.isEmpty ? 'Email can\'t be empty' : null,
+              validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
               //onSaved: (value) => _email = value.trim(),
               controller: _emailController,
             ),
@@ -56,8 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 labelText: 'password',
               ),
-              validator: (value) =>
-                  value.isEmpty ? 'Password can\'t be empty' : null,
+              obscureText:true,
+              validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
               //onSaved: (value) => _password = value.trim(),
               controller: _passwordController,
             ),
@@ -68,7 +69,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.symmetric(vertical: 0.0),
                   child: Text('Forgot your password ?'),
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, 'forgot password',);
+                    Navigator.pushReplacementNamed(
+                      context,
+                      'forgot password',
+                    );
                   },
                 ),
                 FlatButton(
@@ -78,7 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                   ),
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, 'sign up',);
+                    Navigator.pushReplacementNamed(
+                      context,
+                      'sign up',
+                    );
                   },
                 ),
               ],
@@ -86,37 +93,34 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 50.0,
               child: new RaisedButton(
-                color: kButtonColor,
+                color:  Theme.of(context).primaryColor,
                 elevation: 5.0,
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(30.0)),
+                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                 child: new Text(_isLoginForm ? 'Login' : 'Create account',
                     style: new TextStyle(fontSize: 29.0, color: Colors.white)),
                 onPressed: () async {
                   var user = await Provider.of<AuthService>(context)
                       .signIn(_emailController.text, _passwordController.text);
                   if (user != null) {
-                    Navigator.pushReplacementNamed(context, 'profile');
+                    Navigator.pushReplacementNamed(context, 'home');
                   } else
                     print("errrrrrrrrrrrrrrrrrrrr");
                 }, //validateAndSubmit
               ),
             ),
             FlatButton.icon(
-              icon: Icon(FontAwesomeIcons.google, color: kButtonColor),
+              icon: Icon(FontAwesomeIcons.google, color: Theme.of(context).primaryColor),
               onPressed: () async {
                 var user = await Provider.of<AuthService>(context).googleSignIn();
                 if (user != null) {
                   print(user);
-                  Navigator.pushReplacementNamed(context, 'profile');
+                  Navigator.pushReplacementNamed(context, 'home');
                 }
               },
-              label: Expanded(
-                child: Text(
-                  'Sign in with Google',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: kButtonColor, fontSize: 23),
-                ),
+              label: Text(
+                'Login with Google',
+                textAlign: TextAlign.center,
+                style: TextStyle(color:  Theme.of(context).primaryColor, fontSize: 23),
               ),
             ),
           ],

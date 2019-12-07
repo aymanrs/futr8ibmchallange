@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ibmchallenge/screens/Home.dart';
+import 'package:flutter_ibmchallenge/screens/Math.dart';
 import 'package:flutter_ibmchallenge/screens/create_account_screen.dart';
 import 'package:flutter_ibmchallenge/screens/forgot_password_screen.dart';
 import 'package:flutter_ibmchallenge/screens/profile.dart';
@@ -27,7 +29,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData.dark().copyWith(
           primaryColor: Colors.deepOrange,
-          scaffoldBackgroundColor: Color(0xFF36446F),
+          scaffoldBackgroundColor:Colors.grey.shade900,// Color(0xFF36446F),
           accentColor: Colors.deepOrangeAccent,
         ),
         home: LoginScreen(),
@@ -36,6 +38,11 @@ class MainApp extends StatelessWidget {
           'sign up': (context) => CreateAnAccountScreen(),
           'login screen': (context) => LoginScreen(),
           'forgot password': (context) => ForgotPasswordScreen(),
+          'home': (context) => Home(),
+          'math': (context) => Math(),
+          'physique': (context) => Home(),
+          'chimie': (context) => Home(),
+          'info': (context) => Home(),
         },
       ),
     );

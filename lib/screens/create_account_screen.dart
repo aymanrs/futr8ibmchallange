@@ -183,7 +183,7 @@ class _CreateAnAccountScreenState extends State<CreateAnAccountScreen> {
             ],
           ),
           RaisedButton(
-            color: kButtonColor,
+            color:  Theme.of(context).primaryColor,
             elevation: 5.0,
             child: Text(
               'Sign up !',
