@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ibmchallenge/services/auth.dart';
-import 'package:flutter_ibmchallenge/utilities/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'create_account_screen.dart';
-import 'forgot_password_screen.dart';
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -84,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.pushReplacementNamed(
                       context,
-                      'sign up',
+                      'profile',
                     );
                   },
                 ),
