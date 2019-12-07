@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 var user = await Provider.of<AuthService>(context).googleSignIn();
                 if (user != null) {
                   print(user);
-                  Navigator.pushReplacementNamed(context, 'home');
+                  Navigator.pushReplacementNamed(context, 'profile');
                 }
               },
               label: Text(
