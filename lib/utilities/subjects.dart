@@ -1,129 +1,77 @@
-enum Subjects {
-  Maths,
-  Chemistry,
-  Informatics,
-  Arabic,
-  French,
-  English,
-  Biology,
-  Geology,
-  Sociology,
-  Philosophy,
-  Physics,
-  Astronomy,
-  Psychology,
-  Spanish,
-}
-
-enum Branches {
-  Algebra,
-  Geometry,
-  Statistics,
-  Analysis,
-  Grammar,
-  Conjugation,
-  Vocabulary,
-  Spelling,
-  Expression,
-  TextsAnalyse,
-  Particles,
-  ChemicalReactions,
-  NewtonLaws,
-  StatesOfTheMaterial,
-  Electricity,
-  Respiration,
-  Digestion,
-  Anatomy,
-  Energy,
-  InternalPhenomenas,
-  TheCycleOfRocks,
-  TheRocksClassification,
-  Algorithmic,
-  Programming,
-  Hardware,
-  Geography,
-  History,
-  CitizenshipEducation,
-  SolarSystem,
-  Gravity,
-  AstronomicalPhenomenas,
-  QuantumMechanic,
-}
-
-Map<Subjects, List<Branches>> branches = {
-  Subjects.Maths: [
-    Branches.Algebra,
-    Branches.Geometry,
-    Branches.Statistics,
-    Branches.Analysis,
+Map<String, List<String>> branches = {
+  'Maths': [
+    'Algebra',
+    'Geometry',
+    'Statistics',
+    'Analysis',
   ],
-  Subjects.Chemistry: [
-    Branches.Particles,
-    Branches.ChemicalReactions,
-    Branches.QuantumMechanic,
+  'Chemistry': [
+    'Particles',
+    'ChemicalReactions',
+    'QuantumMechanic',
   ],
-  Subjects.Physics: [
-    Branches.NewtonLaws,
-    Branches.StatesOfTheMaterial,
-    Branches.Electricity,
-    Branches.Energy,
-    Branches.Gravity,
+  'Physics': [
+    'NewtonLaws',
+    'StatesOfTheMaterial',
+    'Electricity',
+    'Energy',
+    'Gravity',
   ],
-  Subjects.Arabic: [
-    Branches.Grammar,
-    Branches.Conjugation,
-    Branches.Vocabulary,
-    Branches.Spelling,
-    Branches.Expression,
-    Branches.TextsAnalyse,
+  'Arabic': [
+    'Grammar,'
+    'Conjugation,'
+    'Vocabulary,'
+    'Spelling,'
+    'Expression,'
+    'TextsAnalyse,'
   ],
-  Subjects.French: [
-    Branches.Grammar,
-    Branches.Conjugation,
-    Branches.Vocabulary,
-    Branches.Spelling,
-    Branches.Expression,
-    Branches.TextsAnalyse,
+  'French': [
+    'Grammar',
+    'Conjugation',
+    'Vocabulary',
+    'Spelling',
+    'Expression',
+    'TextsAnalyse',
   ],
-  Subjects.English: [
-    Branches.Grammar,
-    Branches.Conjugation,
-    Branches.Vocabulary,
-    Branches.Spelling,
-    Branches.Expression,
-    Branches.TextsAnalyse,
+  'English': [
+    'Grammar',
+    'Conjugation',
+    'Vocabulary',
+    'Spelling',
+    'Expression',
+    'TextsAnalyse',
   ],
-  Subjects.Spanish: [
-    Branches.Grammar,
-    Branches.Conjugation,
-    Branches.Vocabulary,
-    Branches.Spelling,
-    Branches.Expression,
-    Branches.TextsAnalyse,
+  'Spanish': [
+    'Grammar',
+    'Conjugation',
+    'Vocabulary',
+    'Spelling',
+    'Expression',
+    'TextsAnalyse',
   ],
-  Subjects.Biology: [
-    Branches.Respiration,
-    Branches.Digestion,
-    Branches.Anatomy,
-    Branches.Energy,
+  'Biology': [
+    'Respiration',
+    'Digestion',
+    'Anatomy',
+    'Energy',
   ],
-  Subjects.Geology: [
-    Branches.InternalPhenomenas,
-    Branches.TheCycleOfRocks,
-    Branches.TheRocksClassification,
+  'Geology': [
+    'InternalPhenomenas',
+    'TheCycleOfRocks',
+    'TheRocksClassification',
   ],
-  Subjects.Informatics: [
-    Branches.Algorithmic,
-    Branches.Programming,
-    Branches.Hardware,
+  'Informatics': [
+    'Algorithmic',
+    'Programming',
+    'Hardware',
   ],
-  Subjects.Sociology: [
-    Branches.Geography,
-    Branches.History,
-    Branches.CitizenshipEducation
+  'Sociology': [
+    'Geography',
+    'History',
+    'CitizenshipEducation',
   ],
-  Subjects.Astronomy: [
-    Branches.SolarSystem,
-    Branches.AstronomicalPhenomenas
+  'Astronomy': [
+    'SolarSystem',
+    'AstronomicalPhenomenas',
   ],
 };

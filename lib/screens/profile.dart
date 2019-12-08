@@ -3,7 +3,7 @@ import 'package:flutter_ibmchallenge/utilities/gender_enum.dart';
 import 'package:flutter_ibmchallenge/utilities/user_informations.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_ibmchallenge/utilities/role_enum.dart';
-import 'package:flutter_ibmchallenge/utilities/compare_maps.dart';
+import 'package:flutter_ibmchallenge/utilities/subjects.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -12,6 +12,32 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   Map<String, dynamic> userInformations = getUserInformations();
+
+  List<DropdownMenuItem<String>> getSubjects(){
+    List<DropdownMenuItem<String>> res = [];
+    for(String subject in branches.keys.toList()){
+      res.add(
+        DropdownMenuItem<String>(
+          value: subject,
+          child: Text(subject),
+        ),
+      );
+    }
+    return res;
+  }
+
+  List<DropdownMenuItem<String>> getBranches(String subject){
+    List<DropdownMenuItem<String>> res = [];
+    for(String branch in branches[subject]){
+      res.add(
+        DropdownMenuItem<String>(
+          value: branch,
+          child: Text(branch),
+        ),
+      );
+    }
+    return res;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: SizedBox(
                   width: 200.0,
                   child: FieldModel(
+                    isArea: false,
                     label: 'username',
                     text: userInformations['username'],
                     icon: Icons.person,
@@ -61,10 +88,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: FieldModel(
+                isArea: false,
                 label: 'e-mail',
                 icon: Icons.email,
                 text: userInformations['email'],
-                onChanged: (value){
+                onChanged: (value) {
                   setState(() {
                     userInformations['email'] = value;
                   });
@@ -77,21 +105,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: <Widget>[
                   Expanded(
                     child: FieldModel(
+                      isArea: false,
                       label: 'first name',
                       text: userInformations['first name'],
-                      onChanged: (value){
+                      onChanged: (value) {
                         setState(() {
                           userInformations['first name'] = value;
                         });
                       },
                     ),
                   ),
-                  SizedBox(width: 15.0,),
+                  SizedBox(
+                    width: 15.0,
+                  ),
                   Expanded(
                     child: FieldModel(
+                      isArea: false,
                       label: 'last name',
                       text: userInformations['last name'],
-                      onChanged: (value){
+                      onChanged: (value) {
                         setState(() {
                           userInformations['last name'] = value;
                         });
@@ -118,7 +150,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Text('Teacher'),
                       ),
                     ],
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         userInformations['role'] = value;
                       });
@@ -139,7 +171,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Text('Female'),
                       ),
                     ],
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         userInformations['gender'] = value;
                       });
@@ -152,11 +184,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Slider(
                         activeColor: Theme.of(context).primaryColor,
-                        inactiveColor: Theme.of(context).scaffoldBackgroundColor,
+                        inactiveColor:
+                            Theme.of(context).scaffoldBackgroundColor,
                         value: userInformations['age'].toDouble(),
                         min: 10,
                         max: 50,
-                        onChanged: (value){
+                        onChanged: (value) {
                           setState(() {
                             userInformations['age'] = value.toInt();
                           });
@@ -167,14 +200,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-
+            (userInformations['role'] == Role.Student ? Container() : Row(
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    DropdownButton<String>(
+                      value: userInformations['subject'],
+                      items: getSubjects(),
+                      onChanged: (value){
+                        setState(() {
+                          userInformations['subject'] = value;
+                        });
+                      },
+                    ),
+                    DropdownButton<String>(
+                      value: userInformations['branch'],
+                      items: getBranches(userInformations['subject']),
+                      onChanged: (value){
+                        setState(() {
+                          userInformations['branch'] = value;
+                        });
+                      },
+                    )
+                  ],
+                ),
+                Expanded(
+                  child: FieldModel(
+                    label: 'description',
+                    text: userInformations['description'],
+                    isArea: true,
+                    onChanged: (value){
+                      setState(() {
+                        userInformations['description'] = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            )),
             Center(
               child: RaisedButton(
                 child: Text('Save Changes'),
                 elevation: 5.0,
-                onPressed: (){
-
-                },
+                onPressed: () {},
               ),
             ),
           ],
@@ -188,9 +256,10 @@ class FieldModel extends StatelessWidget {
   final String label, text;
   final IconData icon;
   final Function onChanged;
+  bool isArea = false;
 
   FieldModel(
-      {@required this.label, @required this.text, this.icon, this.onChanged});
+      {@required this.label, @required this.text, this.icon, this.onChanged, this.isArea});
 
   @override
   Widget build(BuildContext context) {
@@ -199,6 +268,7 @@ class FieldModel extends StatelessWidget {
         text: text,
       ),
       onChanged: onChanged,
+      maxLines: isArea ? 5 : 1,
       decoration: InputDecoration(
         labelText: label,
         icon: Icon(

@@ -13,6 +13,9 @@ Map<String, dynamic> getUserInformations() {
     'gender': Gender.Male,
     'password': '12345678',
     'role': Role.Student,
+    'subject': 'Maths',
+    'branch': 'Algebra',
+    'description': 'no description',
   };
   //TODO: get user informations as a map
   return userInformations;
