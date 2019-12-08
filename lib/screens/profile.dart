@@ -4,7 +4,6 @@ import 'package:flutter_ibmchallenge/utilities/gender_enum.dart';
 import 'package:flutter_ibmchallenge/utilities/random_codes_generator.dart';
 import 'package:flutter_ibmchallenge/utilities/role_enum.dart';
 import 'package:flutter_ibmchallenge/utilities/user_informations.dart';
-import 'package:provider/provider.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -27,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Provider.of<String>(context)),
+        title: Text('My Profile'),
         centerTitle: true,
       ),
       body: ListView(

@@ -22,12 +22,14 @@ class _CreateAnAccountScreenState extends State<CreateAnAccountScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Row(
+        child: SingleChildScrollView(
+          child: Container(
+            height: 550,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
               children: <Widget>[
-                Expanded(
+                Center(
                   child: DropdownButton<Role>(
                     value: userInformations['role'],
                     items: [
@@ -47,166 +49,151 @@ class _CreateAnAccountScreenState extends State<CreateAnAccountScreen> {
                     },
                   ),
                 ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Expanded(
-                  flex: 3,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      icon: Icon(
-                        Icons.email,
-                      ),
+
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    icon: Icon(
+                      Icons.email,
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        userInformations['e-mail'] = value;
-                      });
-                    },
-                    validator: (value) =>
-                        value.isEmpty ? 'Email can\'t be empty' : null,
-                    //onSaved: (value) => _email = value.trim(),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      labelText: 'First Name',
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        userInformations['first name'] = value;
-                      });
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 15.0,
-                ),
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Last Name',
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        userInformations['last name'] = value;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                DropdownButton<Gender>(
-                  value: userInformations['gender'],
-                  items: [
-                    DropdownMenuItem(
-                      value: Gender.Male,
-                      child: Text('Male'),
-                    ),
-                    DropdownMenuItem(
-                      value: Gender.Female,
-                      child: Text('Female'),
-                    )
-                  ],
                   onChanged: (value) {
                     setState(() {
-                      userInformations['gender'] = value;
+                      userInformations['e-mail'] = value;
                     });
                   },
+                  validator: (value) =>
+                  value.isEmpty ? 'Email can\'t be empty' : null,
+                  //onSaved: (value) => _email = value.trim(),
                 ),
-                Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        '${userInformations['age']} years',
-                      ),
-                      Slider(
-                        divisions: 100,
-                        max: 100,
-                        min: 0,
-                        value: userInformations['age'].toDouble(),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          labelText: 'First Name',
+                        ),
                         onChanged: (value) {
                           setState(() {
-                            userInformations['age'] = value.toInt();
+                            userInformations['first name'] = value;
                           });
                         },
                       ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      labelText: 'username',
-                      icon: Icon(
-                        Icons.person,
+                    ),
+                    SizedBox(
+                      width: 15.0,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          labelText: 'Last Name',
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            userInformations['last name'] = value;
+                          });
+                        },
                       ),
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        userInformations['username'] = value;
-                      });
-                    },
-                  ),
+                  ],
                 ),
+                Row(
+                  children: <Widget>[
+                    DropdownButton<Gender>(
+                      value: userInformations['gender'],
+                      items: [
+                        DropdownMenuItem(
+                          value: Gender.Male,
+                          child: Text('Male'),
+                        ),
+                        DropdownMenuItem(
+                          value: Gender.Female,
+                          child: Text('Female'),
+                        )
+                      ],
+                      onChanged: (value) {
+                        setState(() {
+                          userInformations['gender'] = value;
+                        });
+                      },
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            '${userInformations['age']} years',
+                          ),
+                          Slider(
+                            divisions: 100,
+                            max: 100,
+                            min: 0,
+                            value: userInformations['age'].toDouble(),
+                            onChanged: (value) {
+                              setState(() {
+                                userInformations['age'] = value.toInt();
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    icon: Icon(
+                      Icons.lock,
+                    ),
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      userInformations['password'] = value;
+                    });
+                  },
+                  validator: (value) =>
+                  value.isEmpty ? 'Password can\'t be empty' : null,
+                  //onSaved: (value) => _password = value.trim(),
+                ),
+
                 SizedBox(
-                  width: 15.0,
-                ),
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      icon: Icon(
-                        Icons.lock,
-                      ),
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        userInformations['password'] = value;
-                      });
-                    },
-                    validator: (value) =>
-                        value.isEmpty ? 'Password can\'t be empty' : null,
-                    //onSaved: (value) => _password = value.trim(),
+                  height: 50.0,
+                  child: new RaisedButton(
+                    color:  Theme.of(context).primaryColor,
+                    elevation: 5.0,
+                    shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                    child: new Text('Sign up !',
+                        style: new TextStyle(fontSize: 29.0, color: Colors.white)),
+                    onPressed:() async {
+                      var user = await Provider.of<AuthService>(context).signUp(
+                          userInformations['e-mail'], userInformations['password']);
+                      if (user != null) {
+                        print(user);
+                        UserFromFuture usr =
+                        await Provider.of<AuthService>(context).getUser;
+                        print("anas : " + usr.claims['name'].toString());
+                        Navigator.pushReplacementNamed(context, 'profile');
+                      } else
+                        print("errrrrrrrrrrrrrrrrrrrr");
+                    }, //validateAndSubmit
                   ),
+                ),
+                FlatButton(
+                  padding: EdgeInsets.symmetric(vertical: 0.0),
+                  child: Text(
+                    'already have an account! Login from here',
+                    textAlign: TextAlign.center,
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      'login screen',
+                    );
+                  },
                 ),
               ],
             ),
-            RaisedButton(
-              color:  Theme.of(context).primaryColor,
-              elevation: 5.0,
-              child: Text(
-                'Sign up !',
-                style: TextStyle(
-                  fontSize: 22.0,
-                ),
-              ),
-              onPressed: () async {
-                var user = await Provider.of<AuthService>(context).signUp(
-                    userInformations['e-mail'], userInformations['password']);
-                if (user != null) {
-                  print(user);
-                  UserFromFuture usr =
-                      await Provider.of<AuthService>(context).getUser;
-                  print("anas : " + usr.claims['name'].toString());
-                  Navigator.pushReplacementNamed(context, 'profile');
-                } else
-                  print("errrrrrrrrrrrrrrrrrrrr");
-              },
-            )
-          ],
+          ),
         ),
       ),
     );

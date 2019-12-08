@@ -58,36 +58,9 @@ class _LoginScreenState extends State<LoginScreen> {
               //onSaved: (value) => _password = value.trim(),
               controller: _passwordController,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                FlatButton(
-                  padding: EdgeInsets.symmetric(vertical: 0.0),
-                  child: Text('Forgot your password ?'),
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      'forgot password',
-                    );
-                  },
-                ),
-                FlatButton(
-                  padding: EdgeInsets.symmetric(vertical: 0.0),
-                  child: Text(
-                    'Don\'t have an account ?\nSign up for free!',
-                    textAlign: TextAlign.center,
-                  ),
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      'profile',
-                    );
-                  },
-                ),
-              ],
-            ),
             SizedBox(
               height: 50.0,
+              width: 250,
               child: new RaisedButton(
                 color:  Theme.of(context).primaryColor,
                 elevation: 5.0,
@@ -98,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   var user = await Provider.of<AuthService>(context)
                       .signIn(_emailController.text, _passwordController.text);
                   if (user != null) {
-                    Navigator.pushReplacementNamed(context, 'home');
+                    Navigator.pushNamed(context, 'home');
                   } else
                     print("errrrrrrrrrrrrrrrrrrrr");
                 }, //validateAndSubmit
@@ -118,6 +91,38 @@ class _LoginScreenState extends State<LoginScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(color:  Theme.of(context).primaryColor, fontSize: 23),
               ),
+            ),
+
+
+
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                FlatButton(
+                  padding: EdgeInsets.symmetric(vertical: 0.0),
+                  child: Text('Forgot password ?'),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      'forgot password',
+                    );
+                  },
+                ),
+                FlatButton(
+                  padding: EdgeInsets.symmetric(vertical: 0.0),
+                  child: Text(
+                    'Sign up for free!',
+                    textAlign: TextAlign.center,
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      'sign up',
+                    );
+                  },
+                ),
+              ],
             ),
           ],
         ),

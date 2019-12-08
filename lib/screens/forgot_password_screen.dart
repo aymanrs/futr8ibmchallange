@@ -6,22 +6,29 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          TextField(
-            decoration: InputDecoration(
-              icon: Icon(
-                Icons.email,
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: TextField(
+              decoration: InputDecoration(
+                icon: Icon(//
+                  Icons.email,
+                ),
+                hintText: 'Type your e-mail adress here',
               ),
-              hintText: 'Type your e-mail adress here',
             ),
           ),
-          FlatButton(
-            child: Text(
-              'Send me a new password',
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: FlatButton(
+              child: Text(
+                'Send me a new password',
+              ),
+              onPressed: () {
+                //TODO: send an e-mail to the user with his new password
+              },
             ),
-            onPressed: () {
-              //TODO: send an e-mail to the user with his new password
-            },
           )
         ],
       ),
