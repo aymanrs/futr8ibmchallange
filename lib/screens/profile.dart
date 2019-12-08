@@ -200,49 +200,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            (userInformations['role'] == Role.Student ? Container() : Row(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    DropdownButton<String>(
-                      value: userInformations['subject'],
-                      items: getSubjects(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: (userInformations['role'] == Role.Student ? Container() : Row(
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      DropdownButton<String>(
+                        value: userInformations['subject'],
+                        items: getSubjects(),
+                        onChanged: (value){
+                          setState(() {
+                            userInformations['subject'] = value;
+                            userInformations['branch'] = branches[value].elementAt(0);
+                          });
+                        },
+                      ),
+                      DropdownButton<String>(
+                        value: userInformations['branch'],
+                        items: getBranches(userInformations['subject']),
+                        onChanged: (value){
+                          setState(() {
+                            userInformations['branch'] = value;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Expanded(
+                    child: FieldModel(
+                      label: 'description',
+                      text: userInformations['description'],
+                      isArea: true,
                       onChanged: (value){
                         setState(() {
-                          userInformations['subject'] = value;
+                          userInformations['description'] = value;
                         });
                       },
                     ),
-                    DropdownButton<String>(
-                      value: userInformations['branch'],
-                      items: getBranches(userInformations['subject']),
-                      onChanged: (value){
-                        setState(() {
-                          userInformations['branch'] = value;
-                        });
-                      },
-                    )
-                  ],
-                ),
-                Expanded(
-                  child: FieldModel(
-                    label: 'description',
-                    text: userInformations['description'],
-                    isArea: true,
-                    onChanged: (value){
-                      setState(() {
-                        userInformations['description'] = value;
-                      });
-                    },
                   ),
+                ],
+              )),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: Center(
+                child: RaisedButton(
+                  child: Text('Save Changes'),
+                  elevation: 5.0,
+                  onPressed: () {},
                 ),
-              ],
-            )),
-            Center(
-              child: RaisedButton(
-                child: Text('Save Changes'),
-                elevation: 5.0,
-                onPressed: () {},
               ),
             ),
           ],
