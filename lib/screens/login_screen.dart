@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 icon: Icon(
                   Icons.email,
                 ),
-                labelText: 'e-mail or username',
+                labelText: 'e-mail',
               ),
               validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
               //onSaved: (value) => _email = value.trim(),

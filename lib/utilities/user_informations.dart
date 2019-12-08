@@ -8,7 +8,7 @@ Map<String, dynamic> getUserInformations() {
     'first name': 'Ayman',
     'last name': 'Riad Solh',
     'username': 'aymanrs',
-    'e-mail': 'ayman.riad.solh56@gmail.com',
+    'email': 'ayman.riad.solh56@gmail.com',
     'age': 12,
     'gender': Gender.Male,
     'password': '12345678',

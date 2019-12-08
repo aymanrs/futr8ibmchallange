@@ -59,7 +59,7 @@ class _CreateAnAccountScreenState extends State<CreateAnAccountScreen> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      userInformations['e-mail'] = value;
+                      userInformations['email'] = value;
                     });
                   },
                   validator: (value) =>
