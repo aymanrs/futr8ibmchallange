@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 50.0,
               width: 250,
-              child: new RaisedButton(
+              child:  RaisedButton(
                 color:  Theme.of(context).primaryColor,
                 elevation: 5.0,
                 shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 var user = await Provider.of<AuthService>(context).googleSignIn();
                 if (user != null) {
                   print(user);
-                  Navigator.pushReplacementNamed(context, 'profile');
+                  Navigator.pushReplacementNamed(context, 'home');
                 }
               },
               label: Text(

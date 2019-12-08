@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ibmchallenge/screens/Home.dart';
 import 'package:flutter_ibmchallenge/screens/Math.dart';
+import 'package:flutter_ibmchallenge/screens/VideoCall.dart';
 import 'package:flutter_ibmchallenge/screens/create_account_screen.dart';
 import 'package:flutter_ibmchallenge/screens/forgot_password_screen.dart';
 import 'package:flutter_ibmchallenge/screens/profile.dart';
@@ -43,6 +44,7 @@ class MainApp extends StatelessWidget {
           'physique': (context) => Home(),
           'chimie': (context) => Home(),
           'info': (context) => Home(),
+          'videoCall': (context) => VideoCall(),
         },
       ),
     );

@@ -7,155 +7,90 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: <Widget>[
-
-
-          Expanded(
-            child: GestureDetector(
-              onTap: (){
-                Navigator.pushNamed(context, 'math');
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: IconButton(
+              icon: Icon(Icons.person),
+              onPressed: (){
+                Navigator.pushNamed(context, 'profile');
               },
-              child: Container(
-                margin: EdgeInsets.all(12),
-                color: Theme.of(context).primaryColor,
-                child: Row(
-                  children: <Widget>[
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CachedNetworkImage(
-                          imageUrl:
-                          "https://i-love-png.com/images/math-formula-2-765436.png",
-                          placeholder: (context, url) => new CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => new Icon(Icons.error),
-                        ),
-                      ),
-                    ),
-                    Spacer(),
-                    Center(
-                      child: Text(
-                        "Math",
-                        style: TextStyle(fontSize: 40),
-                      ),
-                    ),
-                    Spacer(),
-                  ],
-                ),
-              ),
             ),
           ),
-
-          Expanded(
-            child: GestureDetector(
-              onTap: (){
-                Navigator.pushNamed(context, 'chimie');
+          /*
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: IconButton(
+              icon: Icon(Icons.videocam),
+              onPressed: (){
+                Navigator.pushNamed(context, 'choose');
               },
-              child: Container(
-                margin: EdgeInsets.all(12),
-                color: Theme.of(context).primaryColor,
-                child: Row(
-                  children: <Widget>[
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CachedNetworkImage(
-                          imageUrl:
-                          "https://pngimage.net/wp-content/uploads/2018/06/physique-chimie-png-5.png",
-                          placeholder: (context, url) => new CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => new Icon(Icons.error),
-                        ),
-                      ),
-                    ),
-                    Spacer(),
-                    Center(
-                      child: Text(
-                        "Chimie",
-                        style: TextStyle(fontSize: 40),
-                      ),
-                    ),
-                    Spacer(),
-                  ],
-                ),
-              ),
             ),
           ),
-
-          Expanded(
-            child: GestureDetector(
-              onTap: (){
-                Navigator.pushNamed(context, 'physique');
-              },
-              child: Container(
-                margin: EdgeInsets.all(12),
-                color: Theme.of(context).primaryColor,
-                child: Row(
-                  children: <Widget>[
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CachedNetworkImage(
-                          imageUrl:
-                          "http://site.ac-martinique.fr/clgpetitmanoir/wp-content/uploads/2013/05/arton39.gif",
-                          placeholder: (context, url) => new CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => new Icon(Icons.error),
-                        ),
-                      ),
-                    ),
-                    Spacer(),
-                    Center(
-                      child: Text(
-                        "Physique",
-                        style: TextStyle(fontSize: 40),
-                      ),
-                    ),
-                    Spacer(),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-          Expanded(
-            child: GestureDetector(
-              onTap: (){
-                Navigator.pushNamed(context, 'info');
-              },
-              child: Container(
-                margin: EdgeInsets.all(12),
-                color: Theme.of(context).primaryColor,
-                child: Row(
-                  children: <Widget>[
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CachedNetworkImage(
-                          imageUrl:
-                          "https://cdn.iconscout.com/icon/premium/png-256-thumb/computer-science-1574087-1335434.png",
-                          placeholder: (context, url) => new CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => new Icon(Icons.error),
-                        ),
-                      ),
-                    ),
-                    Spacer(),
-                    Center(
-                      child: Text(
-                        "Info",
-                        style: TextStyle(fontSize: 40),
-                      ),
-                    ),
-                    Spacer(),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-
-
+          */
         ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: <Widget>[
+            Subject(context, 'math', 'https://i-love-png.com/images/math-formula-2-765436.png'),
+            Subject(
+              context,
+              'chimie',
+              "https://pngimage.net/wp-content/uploads/2018/06/physique-chimie-png-5.png",
+            ),
+            Subject(
+              context,
+              'physique',
+              "http://site.ac-martinique.fr/clgpetitmanoir/wp-content/uploads/2013/05/arton39.gif",
+            ),
+            Subject(
+              context,
+              'info',
+              "https://cdn.iconscout.com/icon/premium/png-256-thumb/computer-science-1574087-1335434.png",
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Expanded Subject(BuildContext context, String route, String link) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, route);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Theme.of(context).primaryColor,
+          ),
+          margin: EdgeInsets.all(12),
+          child: Row(
+            children: <Widget>[
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CachedNetworkImage(
+                    imageUrl: link,
+                    placeholder: (context, url) => new CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => new Icon(Icons.error),
+                  ),
+                ),
+              ),
+              Spacer(),
+              Center(
+                child: Text(
+                  route[0].toUpperCase() + route.substring(1),
+                  style: TextStyle(fontSize: 40),
+                ),
+              ),
+              Spacer(),
+            ],
+          ),
+        ),
       ),
     );
   }
