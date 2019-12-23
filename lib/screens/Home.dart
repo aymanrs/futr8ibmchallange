@@ -73,11 +73,13 @@ class Home extends StatelessWidget {
               Flexible(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CachedNetworkImage(
+                  child://Text("ad"),
+                   CachedNetworkImage(
                     imageUrl: link,
                     placeholder: (context, url) => new CircularProgressIndicator(),
                     errorWidget: (context, url, error) => new Icon(Icons.error),
                   ),
+
                 ),
               ),
               Spacer(),
